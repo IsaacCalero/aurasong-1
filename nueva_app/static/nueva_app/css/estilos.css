@@ -1,7 +1,10 @@
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
   background: linear-gradient(150deg, #0c1349, #2b1459, #7d224e);
+  background-attachment: fixed;
+  overflow-x: hidden;
   color: white;
 }
 
@@ -81,9 +84,100 @@ main {
   margin: auto;
 }
 
-p {
-  font-size: 1.2rem;
-  line-height: 1.6;
+/* Tarjeta simbólica para el formulario */
+.card-form {
+  background: linear-gradient(145deg, #192057, #1b194a);
+  border-radius: 20px;
+  padding: 50px 40px;
+  box-shadow: 0 0 30px rgba(125, 34, 78, 0.8);
+  max-width: 460px;
+  margin: 100px auto;
+  text-align: center;
+  animation: fadeIn 1s ease;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Título con fondo animado */
+.card-form h2 {
+  font-size: 2.8rem;
+  margin-bottom: 30px;
+  color: white;
+  background: linear-gradient(90deg, #3645bb, #7d224e);
+  background-size: 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px black;
+  animation: moverGradiente 4s ease infinite;
+}
+
+/* Campos de entrada */
+.card-form input {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  border-radius: 10px;
+  font-size: 1rem;
+  border: 2px solid #192057;
+  background-color: #0c1349;
+  color: white;
+  transition: 0.4s;
+  outline: none;
+}
+
+.card-form input:focus {
+  border-color: #7d224e;
+  box-shadow: 0 0 10px #7d224e;
+}
+
+/* Botón de envío */
+.card-form button {
+  width: 100%;
+  padding: 14px 0;
+  background-color: #192057;
+  color: white;
+  font-size: 1.1rem;
+  border: 2px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
+  box-shadow: inset 0 0 10px rgba(255,255,255,0.1), 0 0 15px rgba(125, 34, 78, 0.6);
+}
+
+.card-form button:hover {
+  background-color: #7d224e;
+  transform: scale(1.06);
+}
+
+/* Enlace de registro */
+.card-form .link {
+  margin-top: 20px;
+  display: block;
+  color: #3645bb;
+  text-decoration: none;
+  font-weight: bold;
+  -webkit-text-stroke: 0.3px black;
+  transition: color 0.3s;
+}
+
+.card-form .link:hover {
+  color: #7d224e;
+}
+
+/* Mensajes de error */
+.error-message {
+  background-color: #7d224e;
+  padding: 12px;
+  border-radius: 8px;
+  color: white;
+  margin-bottom: 20px;
+  font-weight: bold;
+  -webkit-text-stroke: 0.5px black;
 }
 
 footer {

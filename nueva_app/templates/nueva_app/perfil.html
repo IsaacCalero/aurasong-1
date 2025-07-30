@@ -12,6 +12,8 @@
       <h1>AuraSong</h1>
       <nav>
         <a href="{% url 'index' %}">Inicio</a>
+        <a href="{% url 'registrar_estado' %}">Registrar estado</a>
+        <a href="{% url 'historial_emocional' %}">Historial</a>
         <a href="{% url 'logout' %}">Cerrar sesión</a>
       </nav>
     </header>
@@ -24,19 +26,31 @@
 
       <section class="profile-cards">
         <div class="card">
-          <h3>Tu estado de ánimo</h3>
-          <p>
-            Aquí podrás ingresar cómo te sientes para recibir música
-            personalizada.
-          </p>
+          <h3>Tu estado emocional actual</h3>
+          {% if estado %}
+            <p><strong>Estado actual:</strong> {{ estado.actual }}</p>
+            <p><strong>Estado deseado:</strong> {{ estado.deseado }}</p>
+            <p><em>Última actualización:</em> {{ estado.fecha|date:"d M Y H:i" }}</p>
+          {% else %}
+            <p>No has registrado tu estado emocional aún.</p>
+            <a href="{% url 'registrar_estado' %}">Registrar ahora</a>
+          {% endif %}
         </div>
+
         <div class="card">
-          <h3>Playlists recomendadas</h3>
-          <p>Pronto verás playlists basadas en tus emociones.</p>
+          <h3>Canción sugerida</h3>
+          {% if cancion %}
+            <p><strong>{{ cancion.titulo }}</strong> — {{ cancion.artista }}</p>
+            <a href="{{ cancion.enlace }}" target="_blank">Escuchar en línea</a>
+          {% else %}
+            <p>No hay recomendaciones disponibles para tu estado deseado.</p>
+          {% endif %}
         </div>
+
         <div class="card">
-          <h3>Historial de sentimientos</h3>
-          <p>En esta sección aparecerán tus sentimientos registrados.</p>
+          <h3>Historial de emociones</h3>
+          <p>Explora cómo han evolucionado tus sentimientos.</p>
+          <a href="{% url 'historial_emocional' %}">Ver historial completo</a>
         </div>
       </section>
     </main>

@@ -78,9 +78,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'base_integrador',      # Cambia al nombre de tu base
         'USER': 'postgres',         # Tu usuario de PostgreSQL
-        'PASSWORD': 'clave_integrador',# Tu contraseña de PostgreSQL
+        'PASSWORD': '1234',# Tu contraseña de PostgreSQL
         'HOST': 'localhost',
-        'PORT': '5433',
+        'PORT': '5432',
     }
 }
 
