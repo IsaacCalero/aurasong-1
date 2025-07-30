@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Perfil de {{ usuario.username }} - AuraSong</title>
+    <link rel="stylesheet" href="{% static 'nueva_app/css/estilos.css' %}" />
+  </head>
+  <body>
+    <header>
+      <h1>AuraSong</h1>
+      <nav>
+        <a href="{% url 'index' %}">Inicio</a>
+        <a href="{% url 'logout' %}">Cerrar sesión</a>
+      </nav>
+    </header>
+
+    <main class="profile-container">
+      <section class="profile-info">
+        <h2>Bienvenido, {{ usuario.username }}!</h2>
+        <p><strong>Email:</strong> {{ usuario.email }}</p>
+      </section>
+
+      <section class="profile-cards">
+        <div class="card">
+          <h3>Tu estado de ánimo</h3>
+          <p>
+            Aquí podrás ingresar cómo te sientes para recibir música
+            personalizada.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Playlists recomendadas</h3>
+          <p>Pronto verás playlists basadas en tus emociones.</p>
+        </div>
+        <div class="card">
+          <h3>Historial de sentimientos</h3>
+          <p>En esta sección aparecerán tus sentimientos registrados.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 AuraSong. Todos los derechos reservados.</p>
+    </footer>
+  </body>
+</html>

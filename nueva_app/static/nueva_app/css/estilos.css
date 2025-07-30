@@ -1,0 +1,290 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(150deg, #0c1349, #2b1459, #7d224e);
+  color: white;
+}
+
+/* Header como contenedor principal */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen del logo a la izquierda */
+.hola {
+  width: 190px;
+  height: auto;
+}
+
+/* Título centrado con degradado animado */
+header h1 {
+  margin: 0;
+  font-size: 8rem;
+  background: linear-gradient(90deg, #3645bb, #3b1d77, #7d224e);
+  background-size: 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px black;
+
+  animation: moverGradiente 5s ease infinite;
+  text-align: center;
+}
+
+@keyframes moverGradiente {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Botones a la derecha, uno arriba y otro abajo */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn {
+  background-color: #192057;
+  color: #ffffff;
+  border: 2px solid black;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+  text-align: center;
+
+  -webkit-text-stroke: 0.3px black;
+}
+
+.btn:hover {
+  background-color: #192057;
+  transform: scale(1.05);
+}
+
+/* Contenido principal */
+main {
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+footer {
+  margin-top: 350px;
+  padding: 10px;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* Carrusel más grande */
+.carousel {
+  flex: 1 1 55%; /* Ocupa el resto del espacio */
+  max-width: 700px; /* límite máximo para que no sea gigantesco */
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Contenedor de imágenes */
+.carousel-images {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-images img {
+  width: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+/* Botones de navegación */
+.carousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 2.5rem;
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.3s ease;
+  user-select: none;
+}
+
+/* Flecha izquierda */
+.carousel .prev {
+  left: 10px;
+}
+
+/* Flecha derecha */
+.carousel .next {
+  right: 10px;
+}
+
+/* Efecto hover en flechas */
+.carousel button:hover {
+  color: #ff66cc;
+}
+
+.content-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+/* Texto más compacto */
+.text-block {
+  flex: 0 0 40%; /* Ocupa el 40% del ancho, no se estira */
+  text-align: left;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  max-width: 480px; /* máximo ancho para no verse muy ancho */
+}
+
+/* Contenedor central para el formulario */
+.form-container {
+  background: rgba(25, 32, 87, 0.85);
+  padding: 40px 50px;
+  max-width: 420px;
+  margin: 100px auto; /* Solo centra el formulario, no afecta al carrusel */
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(125, 34, 78, 0.8);
+  text-align: center;
+  animation: fadeIn 1s ease;
+}
+
+/* Si quieres que no empuje demasiado el carrusel, puedes reducir este margen SOLO en páginas con carrusel */
+body.has-carousel .form-container {
+  margin: 40px auto; /* Menos espacio si la página tiene carrusel */
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Título */
+.form-container h2 {
+  margin-bottom: 25px;
+  font-size: 3rem;
+  background: linear-gradient(90deg, #3645bb, #3b1d77, #7d224e);
+  background-size: 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px black;
+  animation: moverGradiente 5s ease infinite;
+}
+
+/* Campos de entrada */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+  width: 100%;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 2px solid #192057;
+  font-size: 1.1rem;
+  background: #0c1349;
+  color: white;
+  outline: none;
+  transition: all 0.3s;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus {
+  border-color: #7d224e;
+  box-shadow: 0 0 10px #7d224e;
+}
+
+/* Botón SOLO para formularios */
+.form-container button {
+  width: 100%;
+  padding: 14px 0;
+  background-color: #192057;
+  border: 2px solid black;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
+  -webkit-text-stroke: 0.3px black;
+}
+
+.form-container button:hover {
+  background-color: #7d224e;
+  transform: scale(1.07);
+}
+
+/* Mensajes de error */
+.error-message {
+  background-color: #7d224e;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+  -webkit-text-stroke: 0.5px black;
+}
+
+/* Enlace para alternar login/registro */
+.link {
+  display: block;
+  margin-top: 20px;
+  color: #3645bb;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  -webkit-text-stroke: 0.3px black;
+  transition: color 0.3s;
+}
+
+.link:hover {
+  color: #7d224e;
+}
+
+/* Animación para el título */
+@keyframes moverGradiente {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
