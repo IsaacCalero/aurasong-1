@@ -8,55 +8,26 @@
     <link rel="stylesheet" href="{% static 'nueva_app/css/estilos.css' %}" />
   </head>
   <body>
-    <header>
-      <img
-        class="hola"
-        src="{% static 'nueva_app/images/aura_logo.png' %}"
-        alt="Logo AuraSong"
-      />
-      <h1 class="titulo">AuraSong</h1>
+   
+
+    <h1 class="titulo">AuraSong</h1>
+    <h2 class="titulo_index">Música que se adapta a tu estado de ánimo</h2>
+    <main>
+      <!-- Texto alineado a la izquierda -->
+      <div class="text-block">
+        <p>
+          ¿Te gusta escuchar música que conecte con tus emociones? En AuraSong,
+          transformamos tus sentimientos en música. Solo tienes que contarnos
+          cómo te sientes y qué estado de ánimo deseas alcanzar. Nuestra
+          aplicación seleccionará una playlist personalizada que te ayude a
+          elevar tu ánimo, relajarte, concentrarte o simplemente disfrutar el
+          momento. Conecta con tu interior y deja que la música haga el resto.
+        </p>
+      </div>
       <div class="buttons">
         <a href="{% url 'registro' %}" class="btn">Registrar Usuario</a>
         <a href="{% url 'login' %}" class="btn">Iniciar Sesión</a>
       </div>
-    </header>
-
-    <main>
-      <h2>Música que se adapta a tu estado de ánimo</h2>
-      <!-- Sección con texto y carrusel lado a lado -->
-      <div class="content-section">
-        <!-- Texto alineado a la izquierda -->
-        <div class="text-block">
-          <p>
-            ¿Te gusta escuchar música de acuerdo a tus sentimientos? AuraSong te
-            permite hacerlo ingresando tus sentimientos y recibirás una playlist
-            personalizada.
-          </p>
-        </div>
-
-        <!-- Carrusel alineado a la derecha -->
-        <div class="carousel">
-          <div class="carousel-images">
-            <img
-              src="https://th.bing.com/th/id/OIP.8g6FehTGg-yPmtvGMiqvAQHaE7?w=600&h=400&c=7&r=0&o=7&dpr=1.3&pid=1.7"
-              alt="Imagen 1"
-            />
-            <img
-              src="https://cdn0.ecologiaverde.com/es/posts/5/4/5/animales_mas_grandes_del_mundo_3545_orig.jpg"
-              alt="Imagen 2"
-            />
-            <img
-              src="https://th.bing.com/th/id/OIP.AyZj0g9tsg0X_ta1nlRZewHaEK?w=600&h=400&c=7&r=0&o=7&dpr=1.3&pid=1.7"
-              alt="Imagen 3"
-            />
-          </div>
-          <!-- Flechas -->
-          <button class="prev">&#10094;</button>
-          <button class="next">&#10095;</button>
-        </div>
-      </div>
     </main>
-
-    <script src="{% static 'nueva_app/js/scripts.js' %}"></script>
   </body>
 </html>

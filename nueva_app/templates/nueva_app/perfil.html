@@ -9,19 +9,25 @@
   </head>
   <body>
     <header>
-      <h1>AuraSong</h1>
+      <div class="logo-container">
+        <img src="{% static 'nueva_app/images/aura_logo.png' %}" alt="Logo AuraSong" />
+        <h1>AuraSong</h1>
+
+      </div>
       <nav>
         <a href="{% url 'index' %}">Inicio</a>
         <a href="{% url 'registrar_estado' %}">Registrar estado</a>
         <a href="{% url 'historial_emocional' %}">Historial</a>
         <a href="{% url 'logout' %}">Cerrar sesión</a>
+        <a href="{% url 'canciones' %}" class="btn"> Canciones </a>
+
       </nav>
     </header>
+
 
     <main class="profile-container">
       <section class="profile-info">
         <h2>Bienvenido, {{ usuario.username }}!</h2>
-        <p><strong>Email:</strong> {{ usuario.email }}</p>
       </section>
 
       <section class="profile-cards">

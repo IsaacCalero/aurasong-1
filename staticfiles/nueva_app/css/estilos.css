@@ -1,0 +1,328 @@
+/* ===== ESTILOS BASE ===== */
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background-attachment: fixed;
+  overflow-x: hidden;
+  color: white;
+  background: url("../images/logo_ejemplo.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* ===== ESTRUCTURA PRINCIPAL ===== */
+header {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+main {
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+footer {
+  margin-top: 350px;
+  padding: 10px;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* ===== TIPOGRAFÍA ===== */
+.titulo {
+  text-align: center;
+  font-size: 170px;
+  margin: 60px;
+}
+
+.titulo_index {
+  font-size: 30px;
+  text-align: center;
+}
+
+.text-block {
+  justify-content: center;
+  font-size: 20px;
+}
+
+/* ===== COMPONENTES DE FORMULARIO ===== */
+.card-form,
+.form-container {
+  background: rgba(25, 32, 87, 0.85);
+  border-radius: 20px;
+  padding: 50px 40px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+  max-width: 460px;
+  margin: 100px auto;
+  text-align: center;
+  animation: fadeIn 1s ease;
+}
+
+.card-form {
+  background: url("../images/logo_form.png") no-repeat center center fixed;
+}
+
+.card-form h2 {
+  font-size: 2.8rem;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.form-container h2 {
+  margin-bottom: 25px;
+  font-size: 3rem;
+  background: linear-gradient(90deg, #3645bb, #3b1d77, #7d224e);
+  background-size: 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px black;
+  animation: moverGradiente 5s ease infinite;
+}
+
+/* ===== ELEMENTOS DE FORMULARIO ===== */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+.card-form input {
+  width: 100%;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 2px solid #192057;
+  font-size: 1.1rem;
+  background: #0c1349;
+  color: white;
+  outline: none;
+  transition: all 0.3s;
+}
+
+input:focus {
+  border-color: #7d224e;
+  box-shadow: 0 0 10px #7d224e;
+}
+
+/* ===== BOTONES ===== */
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn {
+  background-color: #3cb6ea;
+  color: #ffffff;
+  border: 2px solid black;
+  padding: 15px 20px;
+  font-size: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+button,
+.card-form button,
+.form-container button {
+  width: 100%;
+  padding: 14px 0;
+  background-color: #192057;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: 2px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
+  -webkit-text-stroke: 0.3px black;
+}
+
+button:hover,
+.card-form button:hover,
+.form-container button:hover {
+  background-color: #7d224e;
+  transform: scale(1.06);
+}
+
+.form-container button:hover {
+  transform: scale(1.07);
+}
+
+/* ===== MENSAJES Y ENLACES ===== */
+.error-message {
+  background-color: #7d224e;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+  -webkit-text-stroke: 0.5px black;
+}
+
+.link,
+.card-form .link {
+  display: block;
+  margin-top: 20px;
+  color: #3645bb;
+  text-decoration: none;
+  font-weight: bold;
+  -webkit-text-stroke: 0.3px black;
+  transition: color 0.3s;
+}
+
+.link:hover,
+.card-form .link:hover {
+  color: #7d224e;
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes moverGradiente {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ===== PERFIL: CONTENEDORES Y CARDS ===== */
+.profile-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin-top: 60px;
+  padding: 20px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profile-info h2 {
+  font-size: 2.4rem;
+  text-align: center;
+  background: linear-gradient(90deg, #3cb6ea, #7d224e);
+  background-size: 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.5px black;
+  animation: moverGradiente 5s ease infinite;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: rgba(12, 19, 73, 0.85);
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(125, 34, 78, 0.6);
+  animation: fadeIn 1s ease;
+}
+
+.card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #3cb6ea;
+  border-bottom: 1px solid #7d224e;
+  padding-bottom: 10px;
+}
+
+.card p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.profile-cards a {
+  display: inline-block;
+  margin-top: 15px;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 10px;
+  background-color: #3645bb;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.profile-cards a:hover {
+  background-color: #7d224e;
+  transform: scale(1.05);
+}
+
+/* Opcional: icono decorativo */
+.card::before {
+  content: "♪";
+  font-size: 2.5rem;
+  color: #7d224e;
+  float: right;
+  margin-left: 10px;
+  transform: rotate(10deg);
+}
+
+/* ===== NAVEGACIÓN SUPERIOR ===== */
+header nav {
+  display: flex;
+  gap: 15px;
+  margin-left: auto;
+}
+
+header nav a {
+  padding: 10px 18px;
+  background-color: #3645bb;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none; /* Elimina el borde negro si no es necesario */
+  transition: background-color 0.3s, transform 0.3s;
+  /* Elimina el trazo si causa ruido visual */
+  -webkit-text-stroke: 0px transparent;
+  text-shadow: none; /* Asegúrate de que no haya sombras inesperadas */
+}
+
+
+header nav a:hover {
+  background-color: #7d224e;
+  transform: scale(1.05);
+}
+
+/* ===== LOGO ===== */
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-container img {
+  width: 45px; /* Puedes ajustar el tamaño según lo que quieras transmitir */
+  height: auto;
+}
+
+.logo-container h1 {
+  font-size: 28px;
+  color: white;
+  margin: 0;
+  font-family: 'Arial Rounded MT Bold', sans-serif;
+}

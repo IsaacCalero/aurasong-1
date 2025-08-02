@@ -1,30 +1,24 @@
 from django.db import models
-
-# Representa a cada usuario en el sistema, incluyendo sus preferencias simbólicas.
-class Usuario(models.Model):
-    nombre = models.CharField(max_length=100)
-    correo = models.EmailField()
-    preferencias = models.TextField()
-
-    def __str__(self):
-        return self.nombre
+from django.contrib.auth.models import User
 
 # Guarda cómo se siente el usuario actualmente y cómo desea sentirse.
 class EstadoEmocional(models.Model):
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     actual = models.CharField(max_length=50)
     deseado = models.CharField(max_length=50)
     fecha = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.usuario} ({self.actual} → {self.deseado})"
+        return f"{self.usuario.username} ({self.actual} → {self.deseado})"
 
 # Contiene canciones relacionadas con estados emocionales específicos.
 class Cancion(models.Model):
-    titulo = models.CharField(max_length=100)
-    artista = models.CharField(max_length=100)
-    sentimiento_asociado = models.CharField(max_length=50)
-    enlace = models.URLField()
+    titulo = models.CharField(max_length=500)  # antes 200
+    artista = models.CharField(max_length=300)  # o más
+    url_preview = models.URLField(max_length=500, blank=True, null=True)
+
+
+
 
     def __str__(self):
         return self.titulo
@@ -40,13 +34,13 @@ class Entrada(models.Model):
 
 # Registra interacciones o eventos que involucran a un usuario.
 class Registro(models.Model):
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     referencia = models.CharField(max_length=100)
     descripcion = models.TextField()
     fecha = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.usuario} - {self.referencia}"
+        return f"{self.usuario.username} - {self.referencia}"
 
 # Documentos que recopilan contenido emocional, narrativo o técnico.
 class Documento(models.Model):

@@ -78,7 +78,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'base_integrador',      # Cambia al nombre de tu base
         'USER': 'postgres',         # Tu usuario de PostgreSQL
-        'PASSWORD': '1234',# Tu contraseña de PostgreSQL
+        'PASSWORD': '12345',# Tu contraseña de PostgreSQL
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -120,10 +120,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
-    BASE_DIR / "nueva_app/static",
+    BASE_DIR / 'nueva_app' / 'static',
 ]
+
 
 # Para producción (recolectar estáticos)
 STATIC_ROOT = BASE_DIR / "staticfiles"

@@ -1,14 +1,27 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .models import Usuario, EstadoEmocional, Cancion
+from .models import EstadoEmocional, Cancion
+from django.http import JsonResponse
+from nueva_app.services.importador_deezer import DeezerImportador
+
+def importar_musica(request):
+    artista = request.GET.get('artista', '')
+    if not artista:
+        return JsonResponse({'error': 'Debe proporcionar un nombre de artista.'}, status=400)
+
+    importador = DeezerImportador(artista)
+    cantidad = importador.importar()
+    return JsonResponse({'mensaje': f'Se importaron {cantidad} canciones de {artista}.'})
+
 
 # Página principal
 def index(request):
     return render(request, 'nueva_app/index.html')
 
 
-# Registro de usuario (con modelo User)
+# Registro de usuario (usando modelo User)
 def registro(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -19,12 +32,12 @@ def registro(request):
         if password1 != password2:
             return render(request, 'nueva_app/registro.html', {'error': 'Las contraseñas no coinciden.'})
 
-        if Usuario.objects.filter(nombre=username).exists():
+        if User.objects.filter(username=username).exists():
             return render(request, 'nueva_app/registro.html', {'error': 'El usuario ya existe.'})
 
-        user_django = authenticate(username=username, password=password1)
-        if not user_django:
-            user_django = Usuario.objects.create(nombre=username, correo=email, preferencias='')
+        # Crear el usuario con el sistema de Django
+        user = User.objects.create_user(username=username, email=email, password=password1)
+        user.save()
 
         return redirect('login')
 
@@ -56,7 +69,7 @@ def logout_view(request):
 @login_required
 def perfil(request):
     usuario = request.user
-    estado = EstadoEmocional.objects.filter(usuario__nombre=usuario.username).last()
+    estado = EstadoEmocional.objects.filter(usuario__username=usuario.username).last()
     cancion = None
     if estado:
         cancion = Cancion.objects.filter(sentimiento_asociado=estado.deseado).first()
@@ -88,7 +101,7 @@ def registrar_estado(request):
 # Mostrar todas las canciones asociadas al estado deseado
 @login_required
 def canciones_por_estado(request):
-    estado = EstadoEmocional.objects.filter(usuario__nombre=request.user.username).last()
+    estado = EstadoEmocional.objects.filter(usuario__username=request.user.username).last()
     canciones = []
     if estado:
         canciones = Cancion.objects.filter(sentimiento_asociado=estado.deseado)
@@ -102,5 +115,9 @@ def canciones_por_estado(request):
 # Historial emocional del usuario
 @login_required
 def historial_emocional(request):
-    historial = EstadoEmocional.objects.filter(usuario__nombre=request.user.username).order_by('-fecha')
+    historial = EstadoEmocional.objects.filter(usuario__username=request.user.username).order_by('-fecha')
     return render(request, 'nueva_app/historial.html', {'historial': historial})
+
+def vista_canciones(request):
+    canciones = Cancion.objects.all().order_by('-id')
+    return render(request, 'nueva_app/canciones.html', {'canciones': canciones})

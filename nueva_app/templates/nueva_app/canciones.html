@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AuraSong - Mis Canciones Importadas</title>
+  <link rel="stylesheet" href="{% static 'nueva_app/css/estilos.css' %}" />
+</head>
+<body>
+
+
+  <h1 class="titulo">AuraSong</h1>
+  <h2 class="titulo_index">Catalógo de Canciones </h2>
+
+  <main>
+    <div class="text-block">
+      <p>
+        Aquí se reúnen todas las canciones en un pequeño catalógo musical , listas para que conectarse con tu estado de ánimo, tus recuerdos y tus emociones. Explora cada preview de cada canción y deja que el sonido te guíe 🎵✨
+      </p>
+    </div>
+
+    <div class="tarjetas">
+      {% for cancion in canciones %}
+      <div class="cancion">
+        <div class="titulo">{{ cancion.titulo }}</div>
+        <div class="artista">{{ cancion.artista }}</div>
+        {% if cancion.url_preview %}
+          <audio controls>
+            <source src="{{ cancion.url_preview }}" type="audio/mpeg">
+            Tu navegador no soporta reproducción de audio.
+          </audio>
+        {% else %}
+          <p><em>No hay preview disponible</em></p>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="buttons" style="margin-top: 50px;">
+      <a href="{% url 'perfil' %}" class="btn">Volver al Perfil</a>
+    </div>
+  </main>
+
+</body>
+</html>
